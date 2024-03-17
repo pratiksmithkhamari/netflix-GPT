@@ -10,6 +10,7 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { addUser } from "../utils/userSlice";
 import { useDispatch } from "react-redux";
+import { USER_AVTAR } from "../utils/constants";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -39,7 +40,6 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
 
-          console.log(user);
           navigate("/browse");
           // ...
         })
@@ -64,8 +64,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             userName: name.current.value,
-            photoURL:
-              "https://media.licdn.com/dms/image/D4D35AQH6JoyFN98zVw/profile-framedphoto-shrink_400_400/0/1693654381320?e=1711054800&v=beta&t=TMTl5kbXKbKc-JqCnVbOWLMVx_CRy3Oc06WHBBnjKYQ",
+            photoURL: USER_AVTAR,
           })
             .then(() => {
               // Profile updated!
@@ -75,18 +74,14 @@ const Login = () => {
                 addUser({
                   uid: uid,
                   email: email,
-                  userName:displayName,
+                  userName: displayName,
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
-              // ...
             })
             .catch((error) => {
               setErrorMessage(error.message);
             });
-          console.log(user);
-          navigate("/");
           // ...
         })
         .catch((error) => {
@@ -97,7 +92,6 @@ const Login = () => {
         });
     }
 
-    console.log(email.current.value, password.current.value);
     setErrorMessage(message);
   };
 
