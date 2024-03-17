@@ -23,10 +23,13 @@
 -update the data for trailer video-
 -embeded the youtube video and make it autoplay and mute
 -designing the maincontaier ui using tailwind
+-build secondary-container
+-get data from playing now movie from TMDB
+-make secondary container
+-create movie card and movie list
+-find the URL for image from TMDB
+-creting custom hooks for popular ,upcoming, top-rated
 
-- -get data from playing now movie from TMDB
-
--
 
 #netflix GPT app ===
 
